@@ -21,10 +21,15 @@ class CommandLineArgs(Singleton):
         try:
             args = {
                 'dest': "",
+                'dest_format': "json",
+                'master_leagues_endpoint': "",
+                'champion_mastery_endpoint': "",
+                'champion_mastery_summoner_id': "",
                 'access_key': ""
             }
 
             return args
+
         except Exception as ex:
             self.logger.error("can't use default args")
             self.logger.error('Error: {}'.format(ex))
@@ -34,6 +39,10 @@ class CommandLineArgs(Singleton):
             ap = argparse.ArgumentParser()
 
             ap.add_argument("--dest", required=True, help="path that script will put the api files")
+            ap.add_argument("--dest_format", required=False, help="file format to output")
+            ap.add_argument("--master_leagues_endpoint", required=False, help="endpoint to access master leagues api")
+            ap.add_argument("--champion_mastery_endpoint", required=False, help="endpoint to access champion mastery api")
+            ap.add_argument("--champion_mastery_summoner_id", required=False, help="summoner id to filter api by summoner")
             ap.add_argument("--access_key", required=True, help="access key to access API")
 
             args = vars(ap.parse_args())
@@ -53,12 +62,12 @@ class CommandLineArgs(Singleton):
 
             for k, v in default_args.items():
                 for x, y in running_args.items():
-                    if (k == x and y is not None and args[k] is not None):
+                    if k == x and y is not None and args[k] is not None:
                         args[k].append(y)
-                    elif (k == x and v is not None):
+                    elif k == x and v is not None:
                         args[k].append(v)
 
-            return (args)
+            return args
 
         except Exception as ex:
             self.logger.error("can't merge default and command line arguments")
