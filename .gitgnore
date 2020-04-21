@@ -309,3 +309,4 @@ venv.bak/
 pip-selfcheck.json
 venv/lib/
 
+*.DS_Store
