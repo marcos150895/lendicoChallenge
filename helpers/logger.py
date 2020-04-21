@@ -41,5 +41,3 @@ class Logger(Singleton):
         logger = logging.getLogger('main_logger')
 
         return logger
-
-Logger().getLogger().info("marcos testanto")
