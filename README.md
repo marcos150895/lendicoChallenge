@@ -1,9 +1,18 @@
 # Lendico Challenge Data Engineering
 
 
-#### ubuntu
+#### Ubuntu
 https://howtoinstall.co/pt/ubuntu/xenial/libcairo2
 
-#### mac os dependencies
+#### Mac os dependencies
 brew install cairo 
 brew install gcc
+
+
+## Docker build and run
+docker build -t python-lendico .
+
+docker build -t python-lendico2 .
+
+docker run python-lendico
+
