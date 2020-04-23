@@ -5,7 +5,8 @@ import json
 
 
 class WriterTest(unittest.TestCase):
-    writer = Writer()
+    def setup_method(self, method):
+        self.writer = Writer()
 
     def test_write_json(self):
         mock_data = {
@@ -29,7 +30,7 @@ class WriterTest(unittest.TestCase):
             ]
         }
 
-        # configuration to execute test
+        # configuration to execute tests
         file_name = 'fake_data'
         output_path = ''
         self.writer.write_json(data=mock_data, file_name=file_name, output_path=output_path)
@@ -42,7 +43,3 @@ class WriterTest(unittest.TestCase):
 
         # validate if data is equals the disk
         self.assertEqual(mock_data, data_from_disk, 'Testing if file from disk has the same values')
-
-
-if __name__ == '__main__':
-    unittest.main()

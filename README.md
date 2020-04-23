@@ -60,3 +60,9 @@ Example:
 ```
     docker run -v your_local_system_path:container_path
 ```
+
+## How to execute test
+Execute: 
+```
+pytest
+```

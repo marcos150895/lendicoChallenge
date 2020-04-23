@@ -9,3 +9,5 @@ lxml
 cairosvg
 tinycss
 cssselect
+
+pytest

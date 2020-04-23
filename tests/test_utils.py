@@ -4,8 +4,9 @@ from helpers.utils import Utils
 
 
 class UtilsTest(unittest.TestCase):
-    utils = Utils()
-    header = utils.format_header("TOKEN-XXXXXX1")
+    def setup_method(self, method):
+        self.utils = Utils()
+        self.header = self.utils.format_header("TOKEN-XXXXXX1")
 
     def test_contract_format_header(self):
         keys = self.header.keys()
@@ -31,5 +32,5 @@ class UtilsTest(unittest.TestCase):
                          'Testing dont remove last char when string dont have slash in the end of string')
 
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()

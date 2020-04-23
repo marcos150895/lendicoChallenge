@@ -17,8 +17,8 @@ confs = CommandLineArgs().get_args()
 
 
 def master_leagues():
-    endpoint = confs['master_leagues_endpoint'][0]
-    headers = Utils.format_header(confs['access_key'][0])
+    endpoint = confs.master_leagues_endpoint
+    headers = Utils.format_header(confs.access_key)
 
     master_leagues_json = RiotExtractor()\
         .get_data_from_api(endpoint=endpoint, headers=headers, api_name='master leagues')
@@ -27,9 +27,9 @@ def master_leagues():
 
 
 def champion_mastery():
-    endpoint_without_slash_in_the_end = Utils.remove_slash_in_end_of_string(confs['champion_mastery_endpoint'][0])
-    endpoint = endpoint_without_slash_in_the_end + '/' + confs['champion_mastery_summoner_id'][0]
-    headers = Utils.format_header(confs['access_key'][0])
+    endpoint_without_slash_in_the_end = Utils.remove_slash_in_end_of_string(confs.champion_mastery_endpoint)
+    endpoint = endpoint_without_slash_in_the_end + '/' + confs.champion_mastery_summoner_id
+    headers = Utils.format_header(confs.access_key)
 
     champion_mastery_json = RiotExtractor()\
         .get_data_from_api(endpoint=endpoint, headers=headers, api_name='champion mastery')
@@ -43,11 +43,11 @@ def main():
     champion = champion_mastery()
 
     # writer both in file system
-    Writer().write_json(data=master, file_name="master_leagues", output_path=confs['dest'][0])
-    Writer().write_json(data=champion, file_name="champion_mastery", output_path=confs['dest'][0])
+    Writer().write_json(data=master, file_name="master_leagues", output_path=confs.dest)
+    Writer().write_json(data=champion, file_name="champion_mastery", output_path=confs.dest)
 
     # plotting and save championPointchart
-    RiotChampionPointsXChampionID(champion).save_chart_as_image(path=confs['dest'][0])
+    RiotChampionPointsXChampionID(champion).save_chart_as_image(path=confs.dest)
 
 
 if __name__ == '__main__':
