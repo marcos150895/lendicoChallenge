@@ -38,6 +38,9 @@ def champion_mastery():
 
 
 def main():
+    # checking if output path exists
+    Utils.create_path_if_not_exists(confs.dest)
+
     # executing master leagues json writer
     master = master_leagues()
     champion = champion_mastery()

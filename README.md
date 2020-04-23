@@ -47,7 +47,7 @@ Default arguments:
 
 Example to running project in docker
 ```
-docker run -e "DEST=/tmp" -e "ACCESS_KEY=RGAPI-f29f0484-1c1a-4ff2-965d-d7d5a9901fb9" -e "master_leagues_endpoint=https://br1.api.riotgames.com/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5" -e "champion_mastery_endpoint=https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" -e "champion_mastery_summoner_id=38qXY5lYF21b3TYLcF8j8lw0DlVrfdc8e8rCF55vdH1YlA" python-lendico
+docker run -e "DEST=/tmp" -e "ACCESS_KEY=RGAPI-856b8447-8b0b-4a71-a1a3-097d28469edb" -e "master_leagues_endpoint=https://br1.api.riotgames.com/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5" -e "champion_mastery_endpoint=https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" -e "champion_mastery_summoner_id=38qXY5lYF21b3TYLcF8j8lw0DlVrfdc8e8rCF55vdH1YlA" python-lendico
 ```
 
 In this example you can change DEST, ACCESS_KEY and champion_mastery_summoner_id and you will get the same result
@@ -61,8 +61,16 @@ Example:
     docker run -v your_local_system_path:container_path
 ```
 
+
+Example:
+```
+   docker run -v /local_path:/tmp -e "DEST=/tmp" -e "ACCESS_KEY=RGAPI-856b8447-8b0b-4a71-a1a3-097d28469edb" -e "master_leagues_endpoint=https://br1.api.riotgames.com/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5" -e "champion_mastery_endpoint=https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" -e "champion_mastery_summoner_id=38qXY5lYF21b3TYLcF8j8lw0DlVrfdc8e8rCF55vdH1YlA" python-lendico
+```
+
+
 ## How to execute test
 Execute: 
 ```
 pytest
 ```
+
